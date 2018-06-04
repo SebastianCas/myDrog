@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block maincontent %}
+    {% if paciente %}
+        {% for paciente in pacientes %}
+        <div class="col-md-4 well">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{ paciente.identificacion }}</h3>
+                </div>
+                <div class="panel-body">
+                    <span style="font-size: 25px">Nombres: </span><span class = "text-success" style="font-size: 20px">{{ paciente.nombres }}</span><br>
+                    <span style="font-size: 25px">Apellidos: </span><span class = "text-success" style="font-size: 20px">{{ paciente.apellidos }}</span><br>
+                    <span style="font-size: 25px">Receta medica: </span><span class = "text-success" style="font-size: 20px">{{ paciente.receta }}</span><br>
+                    <span style="font-size: 25px">Medicamento: </span><a style="font-size: 20px" href="{% url "medicamento-detail" paciente.medicamento_id %}">{{ paciente.medicamento }}</a><br>
+					<span style="font-size: 25px">Sede: </span><a style="font-size: 20px" href="{% url "sede-detail" paciente.sede_id %}">{{ paciente.sede }}</a><br>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    {% endif %}
+    {% if medicamento %}
+        {% for medicamento in medicamentos %}
+        <div class="col-md-4 well">
+            <div class="panel panel-primary" style="width: 150px;">
+                <div class="panel-heading">
+                    <a href="{% url "medicamento-detail" medicamento.id %}"><h3 class="panel-title">{{ medicamento.nombre }}</h3></a>
+                </div>
+                <div class="panel-body">
+                    
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    {% endif %}
+{% endblock maincontent %} 

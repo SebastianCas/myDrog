@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block maincontent %}
+    <form action="" method="post">{% csrf_token %}
+        <p>Borrar "{{ object.identificacion }}"?</p>
+        <input class="btn btn-success" type="submit" value="Confirmar" />
+        <a class="btn btn-danger" href="{% url 'paciente-list' %}">Cancelar</a>
+    </form>
+{% endblock maincontent %}

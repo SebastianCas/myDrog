@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block section %}
+ 	<h2>Sedes</h2>
+ 	<hr>
+{% endblock section %}
+
+{% block maincontent %}
+  	<div class="row well">
+ 		{% for p in object_list.all %}
+ 			<div class="col-md-4 well">
+ 				<div class="panel panel-primary">
+ 					<div class="panel-heading">
+ 						<h3 class="panel-title">{{ p.nombre }}</h3>
+ 					</div>
+ 					
+ 					<div class="panel-footer">
+ 						{% if p.comment %}
+ 							{{ p.comment }}
+ 						{% else %}
+							 <a class="btn btn-warning" href="{% url "sede-update" p.id %}">Editar</a>
+							 <a class="btn btn-danger" href="{% url "sede-delete" p.id %}">Borrar</a>
+ 						{% endif %}
+ 					</div>
+ 				</div>
+ 			</div>
+ 		{% endfor %}
+ 	</div>
+{% endblock maincontent %} 

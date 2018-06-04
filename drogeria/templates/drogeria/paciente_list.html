@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block section %}
+ 	<h2>Pacientes</h2>
+ 	<hr>
+{% endblock section %}
+
+{% block maincontent %}
+  	<div class="row well">
+ 		{% for p in object_list.all %}
+ 			<div class="col-md-4 well">
+ 				<div class="panel panel-primary">
+ 					<div class="panel-heading">
+ 						<h3 class="panel-title">{{ p.identificacion }}</h3>
+ 					</div>
+ 					<div class="panel-body">
+                        <span style="font-size: 25px">Nombres: </span><span class = "text-success" style="font-size: 20px">{{ p.nombres }}</span><br>
+                        <span style="font-size: 25px">Apellidos: </span><span class = "text-success" style="font-size: 20px">{{ p.apellidos }}</span><br>
+                        <span style="font-size: 25px">Receta medica: </span><span class = "text-success" style="font-size: 20px">{{ p.receta }}</span><br>
+                        <span style="font-size: 25px">Medicamento: </span><a style="font-size: 20px" href="{% url "medicamento-detail" p.medicamento_id %}">{{ p.medicamento }}</a><br>
+						<span style="font-size: 25px">Sede: </span><a style="font-size: 20px" href="{% url "sede-detail" p.sede_id %}">{{ p.sede }}</a><br>
+                    </div>
+ 					<div class="panel-footer">
+ 						{% if p.comment %}
+ 							{{ p.comment }}
+ 						{% else %}
+							 <a class="btn btn-warning" href="{% url "paciente-update" p.identificacion %}">Editar</a>
+							 <a class="btn btn-danger" href="{% url "paciente-delete" p.identificacion %}">Borrar</a>
+ 						{% endif %}
+ 					</div>
+ 				</div>
+ 			</div>
+ 		{% endfor %}
+ 	</div>
+{% endblock maincontent %} 

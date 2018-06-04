@@ -1,0 +1,9 @@
+{% extends 'registrar.html' %}
+
+{% block maincontent %}
+    <form action="" method="post">{% csrf_token %}
+        <p>Borrar "{{ object.username }}"?</p>
+        <input class="btn btn-success" type="submit" value="Confirmar" />
+        <a class="btn btn-danger" href="{% url 'usuarios-list' %}">Cancelar</a>
+    </form>
+{% endblock maincontent %}

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block maincontent %}
+<div class = "panel panel-primary" style="width: 300px">
+    <div class = "panel-heading" >
+        <h2 class = "panel-title">Crear Sede</h2>
+    </div>
+    <div class = "panel-body">
+        <form enctype="multipart/form-data" method="post">{% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn btn-success" type="submit">Guardar</button>
+            <a class="btn btn-danger" href="{% url 'sede-list' %}">Cancelar</a>
+        </form>
+    </div>
+</div>
+{% endblock maincontent%}

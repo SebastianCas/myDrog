@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block section %}
+    <h2>
+        {{ object.nombre }}
+    </h2>
+    <a class="btn btn-warning" href="{% url "sede-update" object.id %}">Editar</a>
+    <a class="btn btn-danger" href="{% url "sede-delete" object.id %}">Borrar</a>
+    <hr>
+{% endblock section %}
+
+{% block maincontent %}
+{% endblock maincontent %}

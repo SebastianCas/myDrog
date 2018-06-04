@@ -1,0 +1,28 @@
+{% extends 'registrar.html' %}
+
+{% load static %}
+
+{% block section %}
+ 	<h2>Usuarios</h2>
+ 	<hr>
+{% endblock section %}
+
+{% block maincontent %}
+  	<div class="row well">
+ 		{% for p in object_list.all %}
+ 			<div class="col-md-4 well">
+ 				<div class="panel panel-primary">
+ 					<div class="panel-heading">
+ 						<h3 class="panel-title">{{ p.username }}</h3>
+ 					</div>
+ 					
+ 					<div class="panel-footer">
+							<span style="font-size: 25px">Ultimo Acceso: </span><span class = "text-success" style="font-size: 20px">{{ p.last_login }}</span><br>
+							<span style="font-size: 25px">Fecha de Registro: </span><span class = "text-success" style="font-size: 20px">{{ p.date_joined }}</span><br>
+						<a class="btn btn-danger" href="{% url "usuarios-delete" p.id %}">Borrar</a>
+ 					</div>
+ 				</div>
+ 			</div>
+ 		{% endfor %}
+ 	</div>
+{% endblock maincontent %} 
