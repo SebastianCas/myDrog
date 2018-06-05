@@ -3,6 +3,8 @@ from django.shortcuts import render
 from drogeria.models import Sede, Medicamento,Paciente
 from django.views.generic import ListView, DetailView, TemplateView
 from django.urls import reverse_lazy
+from rest_framework import generics
+from drogeria.serializers import SedeSerializer, MedicamentoSerializer, PacienteSerializer
 from django.views.generic.edit import UpdateView, CreateView, DeleteView
 
 # Create your views here.
@@ -23,17 +25,26 @@ class BuscarView(TemplateView):
 
 #lista
 class SedeListView(ListView):
-    model = Sede
+    model=Sede
+class SedeListViewApi(generics.ListCreateAPIView):
+    queryset=Sede.objects.all()
+    serializer_class=SedeSerializer
 class SedeDetailView(DetailView):
     model = Sede
 
 class MedicamentoListView(ListView):
     model = Medicamento
+class MedicamentoListViewApi(generics.ListCreateAPIView):
+    queryset=Medicamento.objects.all()
+    serializer_class=MedicamentoSerializer
 class MedicamentoDetailView(DetailView):
     model = Medicamento
 
 class PacienteListView(ListView):
     model = Paciente
+class PacienteListViewApi(generics.ListCreateAPIView):
+    queryset=Paciente.objects.all()
+    serializer_class=PacienteSerializer
 class PacienteDetailView(DetailView):
     model = Paciente
 

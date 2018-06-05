@@ -7,12 +7,15 @@ urlpatterns = [
 
     path('sede/', login_required(views.SedeListView.as_view()), name='sede-list'),
     path('sede/<int:pk>/detail/', login_required(views.SedeDetailView.as_view()), name='sede-detail'),
+    path('sede/api/', login_required(views.SedeListViewApi.as_view()), name='sede-list-Api'),
 
     path('medicamento/', login_required(views.MedicamentoListView.as_view()), name='medicamento-list'),
     path('medicamento/<int:pk>/detail/', login_required(views.MedicamentoDetailView.as_view()), name='medicamento-detail'),
+    path('medicamento/api/', login_required(views.MedicamentoListViewApi.as_view()), name='medicamento-list-Api'),
 
     path('paciente/', login_required(views.PacienteListView.as_view()), name='paciente-list'),
     path('paciente/<int:pk>/detail/', login_required(views.PacienteDetailView.as_view()), name='paciente-detail'),
+    path('paciente/api', login_required(views.PacienteListViewApi.as_view()), name='paciente-list-api'),
 
     path('medicamentos/buscar/', login_required(views.BuscarView.as_view()), name='buscar'),
 
